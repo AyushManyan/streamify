@@ -7,6 +7,9 @@ import { connectDB } from './ilb/db.js';
 const app = express();
 const PORT = process.env.PORT;
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth",authRoutes)
 
 
