@@ -7,8 +7,24 @@ import OnboardingPage from './pages/OnboardingPage'
 import { Route, Routes } from 'react-router'
 import HomePage from './pages/Homepage'
 import { Toaster } from 'react-hot-toast'
+import { useQuery } from '@tanstack/react-query'
+import { axiosInstance } from './libs/axios'
 
 const App = () => {
+
+  // tanstack query client can be added here if needed
+  const { data, error , isLoading } = useQuery({
+    queryKey: ['todos'],
+    queryFn: async () => {
+      const response = await axiosInstance.get("/auth/me");
+      return response.data;
+    }
+  });
+
+  console.log('Data:', {data});
+
+
+
   return (
     <div className='h-screen' data-theme="night">
       <Routes>
