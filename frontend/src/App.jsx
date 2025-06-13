@@ -9,7 +9,6 @@ import HomePage from './pages/Homepage'
 import { Toaster } from 'react-hot-toast'
 import PageLoader from './components/PageLoader'
 import useAuthUser from './hooks/useAuthUser'
-import { Home } from 'lucide-react'
 
 const App = () => {
 
@@ -32,11 +31,17 @@ const App = () => {
         <Route path="/" element={isAuthenticated && isOnboarded ? (
           <HomePage />
         ) : (<Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />)} />
-        <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to="/" />} />
-        <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} />
+
+        <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to={isOnboarded ? "/" : "/onboarding"} />} />
+
+        <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to={isOnboarded ? "/" : "/onboarding"} />} />
+
         <Route path="/notifications" element={isAuthenticated ? <NotificationPage /> : <Navigate to="/login" />} />
+
         <Route path="/call" element={isAuthenticated ? <CallPage /> : <Navigate to="/login" />} />
+
         <Route path="/chat" element={isAuthenticated ? <ChatPage /> : <Navigate to="/login" />} />
+
         <Route path="/onboarding" element={isAuthenticated ? (!isOnboarded ? (
           <OnboardingPage />
         ) : (
