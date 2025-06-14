@@ -9,6 +9,10 @@ export const login = async (loginData) => {
       const response = await axiosInstance.post("/auth/login", loginData);
       return response.data;
 }
+export const logout = async () => {
+      const response = await axiosInstance.post("/auth/logut");
+      return response.data;
+}
 
 export const getAuthUser = async () => {
       const response = await axiosInstance.get("/auth/me");

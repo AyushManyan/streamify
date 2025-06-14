@@ -9,6 +9,7 @@ import HomePage from './pages/Homepage'
 import { Toaster } from 'react-hot-toast'
 import PageLoader from './components/PageLoader'
 import useAuthUser from './hooks/useAuthUser'
+import Layout from './components/Layout'
 
 const App = () => {
 
@@ -26,10 +27,12 @@ const App = () => {
 
 
   return (
-    <div className='h-screen' data-theme="night">
+    <div className='h-screen' data-theme="forest">
       <Routes>
         <Route path="/" element={isAuthenticated && isOnboarded ? (
-          <HomePage />
+          <Layout showSiderbar={true}>
+            <HomePage />
+          </Layout>
         ) : (<Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />)} />
 
         <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to={isOnboarded ? "/" : "/onboarding"} />} />
