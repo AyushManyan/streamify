@@ -10,10 +10,12 @@ import { Toaster } from 'react-hot-toast'
 import PageLoader from './components/PageLoader'
 import useAuthUser from './hooks/useAuthUser'
 import Layout from './components/Layout'
+import { useThemeStore } from './store/useThemeStore'
 
 const App = () => {
 
   const { isLoading, authUser } = useAuthUser();
+  const {theme} = useThemeStore();
 
   const isAuthenticated = Boolean(authUser);
   const isOnboarded = authUser?.isOnboarded;
@@ -27,7 +29,7 @@ const App = () => {
 
 
   return (
-    <div className='h-screen' data-theme="forest">
+    <div className='h-screen' data-theme={theme}>
       <Routes>
         <Route path="/" element={isAuthenticated && isOnboarded ? (
           <Layout showSiderbar={true}>
