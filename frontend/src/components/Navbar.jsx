@@ -21,9 +21,9 @@ const {mutate:logoutMutation } = useMutation({
 
   return (
     <nav className='bg-base-200 border-b border-base-300 sticky top-0 z-30 h-16 flex items-center'>
-        <div className='container mx-auto px-4 sm:px-6  lg:px-8'>
+        <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
 
-            <div className='flex items-center justify-end w-full'>
+            <div className='flex items-center justify-end w-full gap-2'>
 
                 {/* logo -only in the chat page */}
 
@@ -39,7 +39,7 @@ const {mutate:logoutMutation } = useMutation({
                     </div>
                 )}
 
-                <div className='flex items-center justify-between p-4 bg-base-100'>
+                <div className='flex items-center justify-between p-2 bg-base-100 ml-auto'>
 
                     <Link to={"/notifications"}>
                         <button className='btn btn-ghost btn-circle'>
