@@ -1,0 +1,159 @@
+# Streamify - Language Exchange Platform
+
+Streamify is a modern language exchange and chat platform built with **React**, **Node.js**, **Express**, and **MongoDB**. It enables users to connect, chat, and practice languages with others worldwide, featuring real-time messaging, friend requests, onboarding, and video calls.
+
+---
+
+## 🚀 Features
+
+- **User Authentication** (Sign Up, Login, Logout)
+- **Profile Onboarding** (Bio, Languages, Location, Avatar)
+- **Friend Requests & Notifications**
+- **Real-Time Chat** (powered by [Stream Chat](https://getstream.io/chat/))
+- **Video Calls** (powered by [Stream Video](https://getstream.io/video/))
+- **Theme Selector** (with [DaisyUI](https://daisyui.com/) & Tailwind CSS)
+- **Responsive UI** (Mobile & Desktop)
+- **Modern Stack**: React 19, Vite, Zustand, React Query, Lucide Icons
+
+---
+
+## 🏗️ Project Structure
+
+```
+streamify/
+├── backend/         # Express.js API & MongoDB models
+│   └── src/
+├── frontend/        # React app (Vite)
+│   └── src/
+└── .env             # Environment variables
+```
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/streamify.git
+cd streamify
+```
+
+### 2. Environment Variables
+
+Create a `.env` file in both `backend/` and `frontend/` folders.
+
+#### Backend `.env` example:
+```
+PORT=5001
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET_KEY=your_jwt_secret
+STREAM_API_KEY=your_stream_api_key
+STREAM_API_SECRET=your_stream_api_secret
+NODE_ENV=development
+```
+
+#### Frontend `.env` example:
+```
+VITE_STREAM_API_KEY=your_stream_api_key
+```
+
+### 3. Install Dependencies
+
+#### Backend
+
+```bash
+cd backend
+npm install
+```
+
+#### Frontend
+
+```bash
+cd ../frontend
+npm install
+```
+
+### 4. Run the App
+
+#### Start Backend
+
+```bash
+cd backend
+npm run dev
+```
+
+#### Start Frontend
+
+```bash
+cd ../frontend
+npm run dev
+```
+
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- Backend: [http://localhost:5001](http://localhost:5001)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, Vite, Zustand, React Query, DaisyUI, Tailwind CSS, Lucide Icons, Stream Chat/Video SDK
+- **Backend:** Node.js, Express, MongoDB, Mongoose, JWT, Stream Chat/Video API
+
+---
+
+## 📦 Scripts
+
+### Frontend
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Lint code
+
+### Backend
+
+- `npm run dev` - Start backend with nodemon
+
+---
+
+## 📄 API Endpoints
+
+- **Auth:** `/api/auth/signup`, `/api/auth/login`, `/api/auth/logout`, `/api/auth/onboarding`, `/api/auth/me`
+- **Users:** `/api/users`, `/api/users/friends`, `/api/users/friend-request/:id`, `/api/users/friend-request/:id/accept`, `/api/users/friend-request`, `/api/users/outgoing-friend-request`
+- **Chat:** `/api/chat/token`
+
+---
+
+<!-- ## 🖼️ Screenshots
+
+> _Add screenshots here for Home, Chat, Onboarding, etc._
+
+--- -->
+
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+MIT
+
+---
+
+## 🙏 Acknowledgements
+
+- [Stream Chat & Video](https://getstream.io/)
+- [DaisyUI](https://daisyui.com/)
+- [Lucide Icons](https://lucide.dev/)
+- [Vite](https://vitejs.dev/)
+- [React Query](https://tanstack.com/query/latest)
+
+---
+
+> _Happy language
