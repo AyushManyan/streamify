@@ -1,5 +1,15 @@
 {
-  "dependencies": {
-    "@tanstack/react-query": "^5.80.2"
-  }
+  "name": "streamify",
+  "description": "Streamify is a modern language exchange and chat platform built with **React**, **Node.js**, **Express**, and **MongoDB**. It enables users to connect, chat, and practice languages with others worldwide, featuring real-time messaging, friend requests, onboarding, and video calls.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "build":"npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
