@@ -11,6 +11,7 @@ import PageLoader from './components/PageLoader'
 import useAuthUser from './hooks/useAuthUser'
 import Layout from './components/Layout'
 import { useThemeStore } from './store/useThemeStore'
+import FriendListPage from './pages/FriendListPage'
 
 const App = () => {
 
@@ -47,6 +48,14 @@ const App = () => {
           </Layout>
         ) : (
           <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+        )} />
+
+        <Route path='/friends' element={isAuthenticated && isOnboarded ? (
+          <Layout showSiderbar={true}>
+            <FriendListPage />
+          </Layout>
+        ):(
+        <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
         )} />
 
         <Route path="/call/:id" element={isAuthenticated && isOnboarded ? (
