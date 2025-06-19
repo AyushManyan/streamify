@@ -12,6 +12,7 @@ import useAuthUser from './hooks/useAuthUser'
 import Layout from './components/Layout'
 import { useThemeStore } from './store/useThemeStore'
 import FriendListPage from './pages/FriendListPage'
+import UpadteDetailsPAge from './pages/UpadteDetailsPAge'
 
 const App = () => {
 
@@ -79,6 +80,14 @@ const App = () => {
           <Navigate to="/" />
         )) : (
           <Navigate to="/login" />
+        )} />
+
+        <Route path='/update-details' element={isAuthenticated && isOnboarded ? (
+          <Layout showSiderbar={true}>
+            <OnboardingPage />
+          </Layout>
+        ) :(
+          <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
         )} />
 
       </Routes>

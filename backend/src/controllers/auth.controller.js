@@ -24,8 +24,12 @@ export async function signup(req, res) {
             return res.status(400).json({ message: "Email already exists, please use a different one" });
         }
 
-        const index = Math.floor(Math.random() * 100) + 1; // Random index for avatar 
-        const randomAvater = `https://avatar.iran.liara.run/public/${index}.png`;
+        // const index = Math.floor(Math.random() * 100) + 1; // Random index for avatar 
+        // const randomAvater = `https://api.multiavatar.com/${Math.floor(Math.random()*100000)}.png`;
+        
+        const randomId = Math.floor(Math.random() * 100000);
+        const randomAvater = `https://api.dicebear.com/8.x/adventurer/svg?seed=${randomId}`;
+
         const newUser = await User.create({
             email,
             password,

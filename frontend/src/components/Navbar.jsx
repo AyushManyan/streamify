@@ -53,7 +53,9 @@ const {mutate:logoutMutation } = useMutation({
 
           <div className="avatar">
             <div className="w-9 rounded-full">
-              <img src={authUser?.profilePic} alt="User Avatar" rel="noreferrer" />
+              <Link to='/update-details'>
+                <img src={authUser?.profilePic} alt="User Avatar" rel="noreferrer" />
+              </Link>
             </div>
           </div>
 
