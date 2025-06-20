@@ -178,3 +178,41 @@ export async function onboard(req, res) {
     }
     
 }
+
+export async function changePassword(req, res) {
+    try {
+        
+        const {currentPassword, newPassword} = req.body;
+        if (!currentPassword || !newPassword) {
+            return res.status(400).json({ message: "Current password and new password are required" });
+        }
+        if (newPassword.length < 6) {
+            return res.status(400).json({ message: "New password must be at least 6 characters long" });
+        }
+        const userId = req.user._id;
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const isPasswordCorrect = await user.matchPassword(currentPassword);
+        if (!isPasswordCorrect) {
+            return res.status(401).json({ message: "Current password is incorrect" });
+        }
+        user.password = newPassword;
+        await user.save();
+
+        // remmove jwt token and redirect to login
+        res.clearCookie('jwt');
+
+
+        res.status(200).json({
+            success: true,
+            message: "Password changed successfully",
+        });    
+
+    } catch (error) {
+        
+        console.error("Error during password change:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}

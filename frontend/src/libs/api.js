@@ -33,6 +33,10 @@ export const updateUserDetails = async (userData) => {
       const response = await axiosInstance.put("/auth/update-details", userData);
       return response.data;
 }
+export const changePasswordFn = async (passwordData) => {
+      const response = await axiosInstance.put("/auth/change-password", passwordData);
+      return response.data;
+}
 
 export const getUserFriends = async () => {
       const response = await axiosInstance.get("/users/friends");

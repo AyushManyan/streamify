@@ -1,11 +1,20 @@
 import { Link, useLocation } from "react-router";
 import useAuthUser from "../hooks/useAuthUser"
-import { BellIcon, HomeIcon, SettingsIcon, ShipWheelIcon, UsersIcon } from "lucide-react";
+import { BellIcon, HomeIcon, LockIcon, SettingsIcon, ShipWheelIcon, UsersIcon } from "lucide-react";
+import { getFriendRequests } from "../libs/api";
+import { useQuery } from "@tanstack/react-query";
 
 const SideBar = () => {
     const { authUser } = useAuthUser();
     const location = useLocation();
     const currentPath = location.pathname;
+    
+    const { data: friendRequests} = useQuery({
+    queryKey: ["friendRequests"],
+    queryFn: getFriendRequests,
+    })
+
+    const incomingRequests = friendRequests?.incomingReqs || [];
 
     return (
         <aside className="w-64 bg-base-200 border-r border-base-300 hidden lg:flex flex-col h-screen sticky top-0">
@@ -45,6 +54,10 @@ const SideBar = () => {
                 >
                     <BellIcon className="size-5 text-base-content opacity-70" />
                     <span>Notifications</span>
+                    {incomingRequests.length > 0 && (
+                        <span className="badge badge-primary ml-2">{incomingRequests.length}</span>
+                    )}
+
                 </Link>
 
                 <Link to="/update-details"
@@ -52,6 +65,13 @@ const SideBar = () => {
                         }`}>
                     <SettingsIcon className="size-5 text-base-content opacity-70" />
                     <span>Settings</span>
+                </Link>
+
+                <Link to="/change-password"
+                    className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${currentPath === "/change-password" ? "btn-active" : ""                        }`}>
+                    <LockIcon className="size-5 text-base-content opacity-70"
+                    />
+                    <span>Change Password</span>    
                 </Link>
 
             </nav>

@@ -13,6 +13,7 @@ import Layout from './components/Layout'
 import { useThemeStore } from './store/useThemeStore'
 import FriendListPage from './pages/FriendListPage'
 import UpadteDetailsPAge from './pages/UpadteDetailsPAge'
+import ChangePassword from './pages/ChangePassword'
 
 const App = () => {
 
@@ -89,6 +90,15 @@ const App = () => {
         ) :(
           <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
         )} />
+
+        <Route path='/change-password' element={isAuthenticated && isOnboarded ? (
+          <Layout showSiderbar={true}>
+            <ChangePassword />
+          </Layout>
+        ) : (
+          <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+        )} />
+        
 
       </Routes>
 
